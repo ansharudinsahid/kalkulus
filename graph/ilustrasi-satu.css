@@ -1,0 +1,144 @@
+/* --- PEMBUNGKUS ILUSTRASI --- */
+.ilustrasi-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 25px; /* Memberi jarak dari paragraf di atasnya */
+    width: 100%; /* Memastikan tidak melebihi lebar konten */
+}
+
+/* Jendela Garis Bilangan */
+#viewport-ilustrasi {
+    flex: 1; /* Mengambil sisa ruang yang ada */
+    min-width: 0; /* TRICK PENTING: Mencegah overflow/meluber ke kanan di layar kecil */
+    max-width: 600px; 
+    height: 200px;
+    border: 2px solid var(--border-color); 
+    border-radius: 12px;
+    overflow-x: auto; 
+    overflow-y: hidden;
+    position: relative;
+    background-color: var(--bg-sidebar); 
+}
+
+/* Slider Zoom Vertikal */
+#zoomSlider-ilustrasi {
+    -webkit-appearance: slider-vertical;
+    writing-mode: bt-lr;
+    height: 200px;
+    width: 8px;
+    cursor: ns-resize;
+    flex-shrink: 0; /* Mencegah slider menyusut tak beraturan di layar HP */
+}
+
+/* Track untuk menampung titik */
+#track-ilustrasi {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    transition: width 0.1s ease;
+}
+
+/* Wadah Masing-masing Titik */
+.dot-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Desain Titik */
+.circle {
+    background-color: var(--text-primary); 
+    border-radius: 50%;
+    width: 100%; 
+    aspect-ratio: 1; 
+}
+
+/* Desain Angka */
+.label {
+    position: absolute;
+    top: 20px; 
+    font-family: inherit; 
+    color: var(--text-primary); 
+    display: none; 
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* ---- ATURAN ZOOM (DESKTOP) ---- */
+#track-ilustrasi.zoom-out .integer .label { 
+    display: block; 
+    font-weight: bold; 
+    font-size: 14px; 
+}
+
+#track-ilustrasi.zoom-mid .integer .label,
+#track-ilustrasi.zoom-mid .decimal1 .label { 
+    display: block; 
+    font-size: 12px; 
+}
+
+#track-ilustrasi.zoom-in .label { 
+    display: block; 
+    font-size: 10px; 
+    top: 50px; 
+}
+#track-ilustrasi.zoom-in .integer .label, 
+#track-ilustrasi.zoom-in .decimal1 .label { 
+    font-size: 12px; 
+    font-weight: bold; 
+    top: 50px;
+}
+
+/* =========================================
+   ATURAN RESPONSIVE UNTUK MOBILE (Layar HP) 
+   ========================================= */
+@media (max-width: 768px) {
+#viewport-ilustrasi {
+    flex: 1; /* Mengambil sisa ruang yang ada */
+    min-width: 0; /* TRICK PENTING: Mencegah overflow/meluber ke kanan di layar kecil */
+    max-width: 300px; 
+    height: 200px;
+    border: 2px solid var(--border-color); 
+    border-radius: 12px;
+    overflow-x: auto; 
+    overflow-y: hidden;
+    position: relative;
+    background-color: var(--bg-sidebar); 
+}
+
+    .ilustrasi-wrapper {
+        gap: 10px; /* Kurangi jarak antara kotak dan slider */
+    }
+
+    #viewport-ilustrasi {
+        height: 150px; /* Kurangi tinggi kotak agar proporsional di HP */
+    }
+
+    #zoomSlider-ilustrasi {
+        height: 150px; /* Samakan tinggi slider dengan tinggi kotak */
+    }
+
+    /* Penyesuaian ukuran font agar angka tidak terlalu bertumpuk di layar sempit */
+    #track-ilustrasi.zoom-out .integer .label { 
+        font-size: 11px; 
+    }
+    
+    #track-ilustrasi.zoom-mid .integer .label,
+    #track-ilustrasi.zoom-mid .decimal1 .label { 
+        font-size: 10px; 
+    }
+
+    #track-ilustrasi.zoom-in .label { 
+        font-size: 8px; 
+        top: 25px; /* Angka digeser sedikit ke atas karena tinggi kotak berkurang */
+    }
+    #track-ilustrasi.zoom-in .integer .label, 
+    #track-ilustrasi.zoom-in .decimal1 .label { 
+        font-size: 10px; 
+        top: 25px;
+    }
+}

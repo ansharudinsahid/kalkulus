@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulus Learning Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="graph/ilustrasi-satu.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="app-container" id="appContainer">
+
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header-fixed">
+                <div class="logo-section">
+                    <h1 class="logo-text">Kalkulus</h1>
+                    <button class="icon-btn-outline" id="closeSidebarBtn">
+                        <i class="ri-arrow-left-s-line"></i>
+                    </button>
+                </div>
+
+                <div class="search-box">
+                    <i class="ri-search-line"></i>
+                    <input type="text" id="searchInput" placeholder="Cari sesuatu...">
+
+                    <div class="search-results" id="searchResults"></div>
+                </div>
+            </div>
+
+            <div class="sidebar-scrollable-menu">
+                <nav class="menu-list">
+                    <a href="#" class="menu-item active" data-target="konten-dashboard">Dashboard</a>
+                    <span class="big-materi">Pra-Kalkulus</span>
+                    <a href="#" class="menu-item" data-target="bilangan-real">Bilangan Real</a>
+                    <a href="#" class="menu-item" data-target="konten-materi1">Materi Kalkulus 1</a>
+                    <a href="#" class="menu-item" data-target="konten-materi2">Materi Kalkulus 2</a>
+                </nav>
+            </div>
+
+            <div class="sidebar-bottom-fixed">
+                <div class="dark-mode-card">
+                    <div class="dark-mode-info">
+                        <i class="ri-sun-line"></i>
+                        <span>Dark Mode</span>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="darkModeToggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-nav">
+                <button class="toggle-menu-btn" id="openSidebarBtn">
+                    <i class="ri-menu-line"></i>
+                </button>
+
+                <div class="nav-badges">
+                    <span class="status-badge">Coming Soon 😏🫴</span>
+                </div>
+            </header>
+
+            <section class="scroll-area">
+                <div class="content-block">
+                    <div id="konten-dashboard" class="content-section active">
+                        <div class="content-block">
+                            <span class="category-label">Beranda</span>
+                            <h2 class="content-title">Selamat Datang di Kalkulus</h2>
+                            <p class="description">Ini adalah halaman dashboard. Silakan pilih menu di samping kiri
+                                untuk mulai membaca materi.</p>
+                        </div>
+                    </div>
+
+                    <div id="bilangan-real" class="content-section">
+                        <div class="content-block">
+                            <span class="category-label">Bilangan Real, Estimasi, dan Logika</span>
+                            <h3 class="content-title">Bilangan Real</h3>
+                            <p class="description">Bayangkan titik-titik yang jumlahnya tidak terbatas. Titik-titik
+                                tersebut disusun sangat rapi, lurus, dan rapat sekali (berdempetan) sampai-sampai tidak
+                                ada celah sedikit pun. Saking rapatnya, kumpulan titik ini terlihat seperti sebuah garis
+                                panjang. Setiap titik memiliki nama berupa angka, nama titik itu bisa saja 1 atau 2 atau
+                                2,3 (bilangan desimal) atau bahkan 3,1415...(π)</p>
+                        </div>
+
+                        <div class="ilustrasi-wrapper">
+                            <div id="viewport-ilustrasi">
+                                <div id="track-ilustrasi"></div>
+                            </div>
+                            <input type="range" id="zoomSlider-ilustrasi" min="13" max="250" value="250"
+                                title="Atur Zoom">
+                        </div>
+                        <p style="font-size: 12px; color: var(--text-secondary); margin-top: 10px;">
+                            <em>Gunakan <strong>Scroll Mouse</strong> pada kotak atau <strong>Slider</strong> di kanan
+                                untuk Zoom. Geser scrollbar bawah untuk melihat sisa garis.</em>
+                        </p>
+                    </div>
+                </div>
+
+                <div id="konten-materi1" class="content-section">
+                    <div class="content-block">
+                        <span class="category-label">Pra-Kalkulus</span>
+                        <h2 class="content-title">Bilangan Real</h2>
+                        <p class="description">Bilangan real adalah himpunan bilangan yang mencakup semua bilangan
+                            rasional dan irasional. Contoh bilangan real meliputi angka-angka seperti 3, -5, 0.75, π
+                            (pi), dan √2.</p>
+                    </div>
+                </div>
+
+                <div id="konten-materi2" class="content-section">
+                    <div class="content-block">
+                        <span class="category-label">Kalkulus Lanjut</span>
+                        <h2 class="content-title">Integral Lipat</h2>
+                        <p class="description">Integral lipat adalah generalisasi dari integral tentu untuk fungsi
+                            lebih dari satu variabel nyata. Ini sering digunakan untuk menghitung luas atau volume
+                            dari bangun ruang tiga dimensi.</p>
+                    </div>
+                </div>
+    </div>
+    </section>
+    </main>
+    </div>
+    <script src="graph/ilustrasi-satu.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
