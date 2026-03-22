@@ -24,7 +24,7 @@ function activateDiagramCircle(targetId) {
     const targetCircle = document.getElementById(`euler-diagram-circle-${targetId}`);
     if (targetCircle) {
         // Tambahkan class 'active' untuk tebalkan garis & isi lingkaran terang dengan opacity 0.5
-        targetCircle.classList.add('active'); 
+        targetCircle.classList.add('active');
     }
 }
 
@@ -41,12 +41,12 @@ function activateAccordionItem(targetId) {
 // 4. PASANG EVENT LISTENERS UNTUK AKORDEON (Sinkronisasi ke Diagram)
 eulerAccordionItems.forEach(item => {
     const header = item.querySelector('.euler-acc-header');
-    header.addEventListener('click', function() {
+    header.addEventListener('click', function () {
         const targetId = this.getAttribute('data-target');
-        
+
         // Simpan status aktif (untuk toggle)
         const isActive = item.classList.contains('active');
-        
+
         resetEulerDiagramAll(); // Tutup semua yang lain dan hapus semua highlight diagram
 
         // Jika tidak aktif, aktifkan akordeon ini dan sorot diagramnya
@@ -61,10 +61,10 @@ eulerAccordionItems.forEach(item => {
 // 5. PASANG EVENT LISTENERS UNTUK DIAGRAM (Sinkronisasi ke Akordeon)
 // Gabungkan lingkaran dan label teks untuk didengar klik-nya
 [...eulerDiagramShapes, ...eulerDiagramLabels].forEach(element => {
-    element.addEventListener('click', function() {
+    element.addEventListener('click', function () {
         const fullId = this.getAttribute('id'); // e.g., 'euler-diagram-circle-irrational'
         if (!fullId) return;
-        
+
         // Dapatkan target ID (e.g., 'irrational') dengan memotong prefix
         const targetId = fullId.replace('euler-diagram-circle-', '').replace('euler-diagram-label-', '');
 
@@ -86,14 +86,30 @@ eulerAccordionItems.forEach(item => {
             });
 
             if (activeAccordion) {
-                // Gunakan setTimeout (jeda sangat singkat 0.15 detik) 
-                // agar CSS menyelesaikan sedikit animasi buka-tutupnya sebelum menggulir layar
+                // Gunakan setTimeout agar CSS menyelesaikan animasi buka-tutupnya
                 setTimeout(() => {
-                    activeAccordion.scrollIntoView({ 
-                        behavior: 'smooth', // Efek gulir yang mulus (tidak patah/langsung lompat)
-                        block: 'center'      // Posisikan elemen tepat di atas layar
-                    });
-                }, 150); 
+                    // 1. CARI ELEMEN YANG BENAR-BENAR PUNYA SCROLLBAR
+                    // DIUBAH: dari '.main-content' menjadi '.scroll-area'
+                    const scrollContainer = document.querySelector('.scroll-area'); 
+                    
+                    if (scrollContainer) {
+                        const paddingAtas = 20; // Sedikit jarak aman dari atas (biar tidak terlalu nempel)
+                        
+                        // 2. Dapatkan koordinat elemen dan koordinat kontainer
+                        const elementRect = activeAccordion.getBoundingClientRect();
+                        const containerRect = scrollContainer.getBoundingClientRect();
+                        
+                        // 3. Hitung jarak persis elemen di dalam kontainer.
+                        // Karena kontainer sudah berada di bawah header, kita tidak perlu mengurangi headerHeight lagi.
+                        const y = (elementRect.top - containerRect.top) + scrollContainer.scrollTop - paddingAtas;
+
+                        // 4. Perintahkan KONTAINER untuk scroll secara halus
+                        scrollContainer.scrollTo({ 
+                            top: y, 
+                            behavior: 'smooth' 
+                        });
+                    }
+                }, 150);
             }
         }
         // --------------------------------------------
