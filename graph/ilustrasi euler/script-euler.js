@@ -91,7 +91,7 @@ eulerAccordionItems.forEach(item => {
                 setTimeout(() => {
                     activeAccordion.scrollIntoView({ 
                         behavior: 'smooth', // Efek gulir yang mulus (tidak patah/langsung lompat)
-                        block: 'start'      // Posisikan elemen tepat di atas layar
+                        block: 'center'      // Posisikan elemen tepat di atas layar
                     });
                 }, 150); 
             }
