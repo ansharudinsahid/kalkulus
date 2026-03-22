@@ -416,6 +416,9 @@ input:checked + .slider:before { transform: translateX(20px); }
     .sidebar.active {
         transform: translateX(0); /* Munculkan sidebar saat aktif di HP */
     }
+        .sidebar-bottom-fixed {
+        padding: 10px 30px 60px 30px;
+    }
 }
 
 /* --- PENGATURAN KONTEN DINAMIS --- */
