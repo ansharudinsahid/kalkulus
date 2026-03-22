@@ -155,6 +155,20 @@
     transform: rotate(180px);
 }
 
+/* Menonaktifkan seleksi teks dan efek tap pada elemen interaktif */
+.euler-shape,
+.euler-text,
+.euler-acc-header {
+    /* Mencegah teks bisa diblok/diseleksi */
+    -webkit-user-select: none; /* Untuk browser berbasis WebKit (Safari/Chrome) */
+    -moz-user-select: none;    /* Untuk Firefox */
+    -ms-user-select: none;     /* Untuk Internet Explorer/Edge lawas */
+    user-select: none;         /* Standar modern */
+
+    /* Menghilangkan efek kotak/kedipan biru saat elemen di-tap di HP */
+    -webkit-tap-highlight-color: transparent; 
+}
+
 /* =========================================
    RESPONSIVE LAYOUT (Mobile)
    ========================================= */

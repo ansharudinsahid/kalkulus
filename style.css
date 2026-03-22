@@ -6,7 +6,8 @@
     --text-secondary: #666666;
     --accent-blue: #00a2ff;
     --border-color: #eeeeee;
-    --scroll-thumb: #cccccc; /* Warna scrollbar */
+    --scroll-thumb: #cccccc;
+    /* Warna scrollbar */
     --scroll-thumb-hover: #aaaaaa;
 }
 
@@ -17,7 +18,8 @@
     --text-primary: #ffffff;
     --text-secondary: #bbbbbb;
     --border-color: #333333;
-    --scroll-thumb: #555555; /* Warna scrollbar dark mode */
+    --scroll-thumb: #555555;
+    /* Warna scrollbar dark mode */
     --scroll-thumb-hover: #777777;
 }
 
@@ -30,28 +32,36 @@
 }
 
 html {
-    font-size: 15px; /* Ukuran font dasar untuk desktop (1rem) */
+    font-size: 15px;
+    /* Ukuran font dasar untuk desktop (1rem) */
 }
 
 body {
     background-color: var(--bg-main);
     color: var(--text-primary);
     transition: background-color 0.3s ease, color 0.3s ease;
-    overflow: hidden; /* Mencegah scroll pada seluruh halaman (body) */
+    overflow: hidden;
+    /* Mencegah scroll pada seluruh halaman (body) */
 }
 
 /* --- KUSTOMISASI SCROLLBAR (Desain Soft) --- */
 ::-webkit-scrollbar {
-    width: 6px; /* Scrollbar tipis */
+    width: 6px;
+    /* Scrollbar tipis */
     height: 6px;
 }
+
 ::-webkit-scrollbar-track {
-    background: transparent; /* Latar belakang scrollbar transparan */
+    background: transparent;
+    /* Latar belakang scrollbar transparan */
 }
+
 ::-webkit-scrollbar-thumb {
     background-color: var(--scroll-thumb);
-    border-radius: 10px; /* Ujung scrollbar membulat */
+    border-radius: 10px;
+    /* Ujung scrollbar membulat */
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background-color: var(--scroll-thumb-hover);
 }
@@ -67,7 +77,8 @@ body {
     background-color: var(--bg-sidebar);
     border-right: 1px solid var(--border-color);
     display: flex;
-    flex-direction: column; /* Mengatur isi vertikal */
+    flex-direction: column;
+    /* Mengatur isi vertikal */
 }
 
 /* Bagian logo dan pencarian yang diam di atas */
@@ -117,27 +128,35 @@ body {
 /* --- FITUR PENCARIAN (DROPDOWN) --- */
 
 .search-box {
-    position: relative; /* Penting: agar dropdown hasil pencarian tidak lari dari kotak ini */
+    position: relative;
+    /* Penting: agar dropdown hasil pencarian tidak lari dari kotak ini */
 }
 
 .search-results {
     position: absolute;
-    top: 100%; /* Tepat di bawah kotak pencarian */
+    top: 100%;
+    /* Tepat di bawah kotak pencarian */
     left: 0;
     width: 100%;
     background-color: var(--bg-main);
     border: 1px solid var(--border-color);
     border-radius: 8px;
-    margin-top: 5px; /* Jarak sedikit dari input */
-    max-height: 200px; /* Batas tinggi maksimal dropdown */
-    overflow-y: auto; /* Memunculkan scroll jika hasil banyak */
-    z-index: 50; /* Melayang di atas elemen lain */
-    display: none; /* Sembunyikan secara default */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-top: 5px;
+    /* Jarak sedikit dari input */
+    max-height: 200px;
+    /* Batas tinggi maksimal dropdown */
+    overflow-y: auto;
+    /* Memunculkan scroll jika hasil banyak */
+    z-index: 50;
+    /* Melayang di atas elemen lain */
+    display: none;
+    /* Sembunyikan secara default */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .search-results.active {
-    display: block; /* Tampilkan saat class 'active' ditambahkan via JS */
+    display: block;
+    /* Tampilkan saat class 'active' ditambahkan via JS */
 }
 
 .search-result-item {
@@ -149,18 +168,21 @@ body {
 }
 
 .search-result-item:last-child {
-    border-bottom: none; /* Hilangkan garis bawah pada item terakhir */
+    border-bottom: none;
+    /* Hilangkan garis bawah pada item terakhir */
 }
 
 .search-result-item:hover,
 .search-result-item.keyboard-focused {
-    background-color: var(--border-color); 
+    background-color: var(--border-color);
 }
 
 /* Bagian menu yang bisa di-scroll secara independen */
 .sidebar-scrollable-menu {
-    flex: 1; /* Mengambil sisa ruang kosong di tengah sidebar */
-    overflow-y: auto; /* Memunculkan scrollbar jika menu kepanjangan */
+    flex: 1;
+    /* Mengambil sisa ruang kosong di tengah sidebar */
+    overflow-y: auto;
+    /* Memunculkan scrollbar jika menu kepanjangan */
     padding: 0 20px;
 }
 
@@ -179,6 +201,14 @@ body {
     font-size: 1rem;
     font-weight: 500;
     transition: background-color 0.2s;
+        /* Mencegah teks bisa diblok/diseleksi */
+    -webkit-user-select: none; /* Untuk browser berbasis WebKit (Safari/Chrome) */
+    -moz-user-select: none; /* Untuk Firefox */
+    -ms-user-select: none; /* Untuk Internet Explorer/Edge lawas */
+    user-select: none; /* Standar modern */
+
+    /* Menghilangkan efek kotak/kedipan biru saat elemen di-tap di HP */
+    -webkit-tap-highlight-color: transparent;
 }
 
 .menu-item:hover {
@@ -199,7 +229,8 @@ body {
 /* Bagian dark mode yang diam di bawah */
 .sidebar-bottom-fixed {
     padding: 20px;
-    border-top: 1px solid var(--border-color); /* Garis batas opsional */
+    border-top: 1px solid var(--border-color);
+    /* Garis batas opsional */
 }
 
 .dark-mode-card {
@@ -222,14 +253,29 @@ body {
     position: relative;
     width: 44px;
     height: 24px;
+        /* Mencegah teks bisa diblok/diseleksi */
+    -webkit-user-select: none; /* Untuk browser berbasis WebKit (Safari/Chrome) */
+    -moz-user-select: none; /* Untuk Firefox */
+    -ms-user-select: none; /* Untuk Internet Explorer/Edge lawas */
+    user-select: none; /* Standar modern */
+
+    /* Menghilangkan efek kotak/kedipan biru saat elemen di-tap di HP */
+    -webkit-tap-highlight-color: transparent;
 }
 
-.toggle-switch input { opacity: 0; width: 0; height: 0; }
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
 
 .slider {
     position: absolute;
     cursor: pointer;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-color: #ccc;
     transition: .4s;
     border-radius: 34px;
@@ -238,19 +284,27 @@ body {
 .slider:before {
     position: absolute;
     content: "";
-    height: 18px; width: 18px;
-    left: 3px; bottom: 3px;
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
     background-color: white;
     transition: .4s;
     border-radius: 50%;
 }
 
-input:checked + .slider { background-color: var(--accent-blue); }
-input:checked + .slider:before { transform: translateX(20px); }
+input:checked+.slider {
+    background-color: var(--accent-blue);
+}
+
+input:checked+.slider:before {
+    transform: translateX(20px);
+}
 
 /* --- MAIN CONTENT STYLES --- */
 .main-content {
-    flex: 1; /* Mengambil sisa ruang layar sebelah kanan */
+    flex: 1;
+    /* Mengambil sisa ruang layar sebelah kanan */
     display: flex;
     flex-direction: column;
 }
@@ -258,7 +312,8 @@ input:checked + .slider:before { transform: translateX(20px); }
 /* Navbar yang diam di atas */
 .top-nav {
     height: 60px;
-    flex-shrink: 0; /* Mencegah navbar tertekan saat konten banyak */
+    flex-shrink: 0;
+    /* Mencegah navbar tertekan saat konten banyak */
     background-color: var(--bg-header);
     display: flex;
     justify-content: space-between;
@@ -268,9 +323,11 @@ input:checked + .slider:before { transform: translateX(20px); }
 
 /* Area konten artikel yang bisa di-scroll independen */
 .scroll-area {
-    flex: 1; /* Memakan sisa ruang di bawah navbar */
+    flex: 1;
+    /* Memakan sisa ruang di bawah navbar */
     padding: 40px;
-    overflow-y: auto; /* Memunculkan scrollbar di area ini saja */
+    overflow-y: auto;
+    /* Memunculkan scrollbar di area ini saja */
 }
 
 .content-block {
@@ -322,9 +379,14 @@ input:checked + .slider:before { transform: translateX(20px); }
 .sidebar-overlay {
     display: none;
     position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Latar belakang hitam transparan */
-    z-index: 10; /* Berada di atas konten utama */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Latar belakang hitam transparan */
+    z-index: 10;
+    /* Berada di atas konten utama */
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -345,6 +407,14 @@ input:checked + .slider:before { transform: translateX(20px); }
     font-size: 24px;
     color: var(--text-primary);
     cursor: pointer;
+    /* Mencegah teks bisa diblok/diseleksi */
+    -webkit-user-select: none; /* Untuk browser berbasis WebKit (Safari/Chrome) */
+    -moz-user-select: none; /* Untuk Firefox */
+    -ms-user-select: none; /* Untuk Internet Explorer/Edge lawas */
+    user-select: none; /* Standar modern */
+
+    /* Menghilangkan efek kotak/kedipan biru saat elemen di-tap di HP */
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* Transisi halus untuk sidebar saat dilipat di laptop */
@@ -354,22 +424,29 @@ input:checked + .slider:before { transform: translateX(20px); }
 
 /* KETIKA DI LAPTOP & SIDEBAR DILIPAT */
 .app-container.collapsed .sidebar {
-    margin-left: -280px; /* Menyembunyikan sidebar ke luar layar kiri */
+    margin-left: -280px;
+    /* Menyembunyikan sidebar ke luar layar kiri */
 }
+
 .app-container.collapsed .toggle-menu-btn {
-    display: block; /* Memunculkan tombol hamburger di navbar laptop */
+    display: block;
+    /* Memunculkan tombol hamburger di navbar laptop */
 }
 
 /* OVERLAY (Layar Gelap) */
 .sidebar-overlay {
     display: none;
     position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 10;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
+
 .sidebar-overlay.active {
     display: block;
     opacity: 1;
@@ -378,19 +455,21 @@ input:checked + .slider:before { transform: translateX(20px); }
 /* Pastikan overlay tidak pernah muncul di layar besar */
 @media (min-width: 769px) {
     .sidebar-overlay.active {
-        display: none !important; 
+        display: none !important;
     }
 }
 
 /* --- ATURAN KHUSUS HP (MOBILE) --- */
 @media (max-width: 768px) {
     .description {
-        font-size: 0.9rem; /* Sedikit lebih kecil untuk layar kecil */
+        font-size: 0.9rem;
+        /* Sedikit lebih kecil untuk layar kecil */
         line-height: 1.6;
     }
 
     .toggle-menu-btn {
-        display: block; /* Selalu tampilkan hamburger di HP */
+        display: block;
+        /* Selalu tampilkan hamburger di HP */
     }
 
     .top-nav {
@@ -406,15 +485,18 @@ input:checked + .slider:before { transform: translateX(20px); }
     .sidebar {
         width: 240px;
         position: fixed;
-        top: 0; left: 0;
+        top: 0;
+        left: 0;
         height: 100vh;
         z-index: 20;
-        transform: translateX(-100%); /* Sembunyikan secara default di HP */
-        box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        transform: translateX(-100%);
+        /* Sembunyikan secara default di HP */
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
     }
 
     .sidebar.active {
-        transform: translateX(0); /* Munculkan sidebar saat aktif di HP */
+        transform: translateX(0);
+        /* Munculkan sidebar saat aktif di HP */
     }
 
     .sidebar-bottom-fixed {
@@ -425,21 +507,25 @@ input:checked + .slider:before { transform: translateX(20px); }
 /* --- PENGATURAN KONTEN DINAMIS --- */
 
 .content-section {
-    display: none; /* Sembunyikan semua konten secara default */
-    animation: fadeIn 0.4s ease forwards; /* Efek muncul perlahan */
+    display: none;
+    /* Sembunyikan semua konten secara default */
+    animation: fadeIn 0.4s ease forwards;
+    /* Efek muncul perlahan */
 }
 
 /* Hanya konten yang memiliki class 'active' yang akan ditampilkan */
 .content-section.active {
-    display: block; 
+    display: block;
 }
 
 /* Animasi sederhana dari transparan menjadi jelas */
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(10px); /* Muncul sedikit dari bawah */
+        transform: translateY(10px);
+        /* Muncul sedikit dari bawah */
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
