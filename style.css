@@ -29,6 +29,10 @@
     /* border: 1px solid red; */
 }
 
+html {
+    font-size: 15px; /* Ukuran font dasar untuk desktop (1rem) */
+}
+
 body {
     background-color: var(--bg-main);
     color: var(--text-primary);
@@ -172,6 +176,7 @@ body {
     color: var(--text-primary);
     padding: 12px 15px;
     border-radius: 10px;
+    font-size: 1rem;
     font-weight: 500;
     transition: background-color 0.2s;
 }
@@ -271,24 +276,30 @@ input:checked + .slider:before { transform: translateX(20px); }
 .content-block {
     margin-bottom: 40px;
     max-width: 800px;
+    justify-self: center;
 }
 
 .category-label {
     color: var(--text-secondary);
-    font-size: 34px;
+    font-size: 1.7rem;
     font-weight: 500;
 }
 
 .content-title {
-    font-size: 28px;
+    font-size: 1.5rem;
     margin: 5px 0 15px 0;
 }
 
 .description {
+    font-size: 1rem;
     line-height: 1.7;
     color: var(--text-primary);
 }
 
+.break {
+    display: block;
+    margin-top: 20px;
+}
 
 
 /* --- RESPONSIVE MOBILE LAYOUT --- */
@@ -373,6 +384,11 @@ input:checked + .slider:before { transform: translateX(20px); }
 
 /* --- ATURAN KHUSUS HP (MOBILE) --- */
 @media (max-width: 768px) {
+    .description {
+        font-size: 0.9rem; /* Sedikit lebih kecil untuk layar kecil */
+        line-height: 1.6;
+    }
+
     .toggle-menu-btn {
         display: block; /* Selalu tampilkan hamburger di HP */
     }
@@ -388,6 +404,7 @@ input:checked + .slider:before { transform: translateX(20px); }
     }
 
     .sidebar {
+        width: 240px;
         position: fixed;
         top: 0; left: 0;
         height: 100vh;

@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalkulus Learning Platform</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="graph/ilustrasi-satu.css">
+    <link rel="stylesheet" href="graph/ilustrasi-satu/ilustrasi-satu.css">
+    <link rel="stylesheet" href="graph/ilustrasi euler/style-euler.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -37,8 +39,8 @@
                 <nav class="menu-list">
                     <a href="#" class="menu-item active" data-target="konten-dashboard">Dashboard</a>
                     <span class="big-materi">Pra-Kalkulus</span>
-                    <a href="#" class="menu-item" data-target="bilangan-real">Bilangan Real</a>
-                    <a href="#" class="menu-item" data-target="konten-materi1">Materi Kalkulus 1</a>
+                    <a href="#" class="menu-item" data-target="bilangan-real">Bilangan Real, Estimasi, dan Logika</a>
+                    <a href="#" class="menu-item" data-target="pertidaksamaan-nilaimutlak">Pertidaksamaan dan Nilai Mutlak</a>
                     <a href="#" class="menu-item" data-target="konten-materi2">Materi Kalkulus 2</a>
                 </nav>
             </div>
@@ -74,61 +76,212 @@
                         <div class="content-block">
                             <span class="category-label">Beranda</span>
                             <h2 class="content-title">Selamat Datang di Kalkulus</h2>
-                            <p class="description">Ini adalah halaman dashboard. Silakan pilih menu di samping kiri
-                                untuk mulai membaca materi.</p>
+                            <p class="description">Ini adalah halaman dashboard. Silakan pilih menu di samping kiri untuk mulai membaca materi.</p>
                         </div>
                     </div>
 
                     <div id="bilangan-real" class="content-section">
+                        <span class="category-label">Bilangan Real, Estimasi, dan Logika</span>
                         <div class="content-block">
-                            <span class="category-label">Bilangan Real, Estimasi, dan Logika</span>
                             <h3 class="content-title">Bilangan Real</h3>
-                            <p class="description">Bayangkan titik-titik yang jumlahnya tidak terbatas. Titik-titik
-                                tersebut disusun sangat rapi, lurus, dan rapat sekali (berdempetan) sampai-sampai tidak
-                                ada celah sedikit pun. Saking rapatnya, kumpulan titik ini terlihat seperti sebuah garis
-                                panjang. Setiap titik memiliki nama berupa angka, nama titik itu bisa saja 1 atau 2 atau
-                                2,3 (bilangan desimal) atau bahkan 3,1415...(π)</p>
+                            <p class="description">Bayangkan ada sebuah garis lurus yang sangat panjang. Garis ini bukan sekadar garis biasa—garis ini sebenarnya tersusun dari titik-titik yang jumlahnya tak terbatas.<br> Titik-titik tersebut:</p>
+                            <ol class="description" style="padding-left: 30px;">
+                                <li>Tersusun rapi</li>
+                                <li>Sangat rapat</li>
+                                <li>Tidak memiliki celah</li>
+                            </ol>
+                            <p class="description">
+                                Karena begitu rapatnya, yang terlihat hanyalah sebuah garis utuh, garis ini disebut garis bilangan. Setiap titik pada garis ini mewakili sebuah bilangan real. Bilangan real mencakup semua bilangan yang bisa kita temukan di garis tersebut, termasuk bilangan rasional (seperti 1/2, 0.75) dan bilangan irasional (seperti π, √2). Jadi, setiap angka yang bisa kita bayangkan berada di suatu tempat di garis ini, menjadikan garis bilangan real sebagai representasi visual dari semua bilangan yang ada.<br> Secara konsep, titik-titik pada garis bilangan real tersusun sangat rapat tanpa celah. Namun, dalam ilustrasi dibawah, kita hanya bisa menampilkan sebagian titik saja, misalnya hingga dua angka desimal seperti 2,67.
+                            </p>
+
                         </div>
 
                         <div class="ilustrasi-wrapper">
                             <div id="viewport-ilustrasi">
                                 <div id="track-ilustrasi"></div>
                             </div>
-                            <input type="range" id="zoomSlider-ilustrasi" min="13" max="250" value="250"
+                            <input type="range" id="zoomSlider-ilustrasi" min="13" max="1501" value="1250"
                                 title="Atur Zoom">
                         </div>
                         <p style="font-size: 12px; color: var(--text-secondary); margin-top: 10px;">
-                            <em>Gunakan <strong>Scroll Mouse</strong> pada kotak atau <strong>Slider</strong> di kanan
-                                untuk Zoom. Geser scrollbar bawah untuk melihat sisa garis.</em>
+                            <em>Gunakan <strong>Scroll Mouse</strong> pada kotak atau <strong>Slider</strong> di kanan untuk Zoom.</em>
                         </p>
-                    </div>
-                </div>
+                        <p class="description">
+                            Saat di Zoom out, garis terlihat utuh → karena titik terlalu rapat untuk dibedakan<br> Saat di Zoom in, kita mulai melihat titik-titik dengan nilai tertentu (misalnya 0.67, 0.68)<br>
+                            Tapi secara matematis di antara 0.67 dan 0.68 masih ada:<br>
+                            0.671<br>
+                            0.672<br>
+                            0.673<br>
+                            ... (tak hingga)
+                        </p>
+                        <p class="description" style="margin-top: 20px;">
+                            Sejauh ini, kita melihat bahwa setiap titik pada garis bilangan memiliki sebuah nilai, dan semua nilai tersebut disebut bilangan real.<br> Namun, tidak semua bilangan real memiliki sifat yang sama.<br> Beberapa bilangan:<br>
+                            <li style="margin-left: 30px; font-size: 0.9rem;">mudah ditulis (seperti 1, 2, atau 0.5)</li>
+                            <li style="margin-left: 30px; font-size: 0.9rem;">ada yang berupa pecahan</li>
+                            <li style="margin-left: 30px; font-size: 0.9rem;">ada juga yang tidak bisa ditulis secara sederhana seperti π </li>
+                        </p>
+                        <p class="description">
+                            jenis pengelompokan ini dapat divisualisasikan menggunakan diagram Euler, yaitu diagram yang menunjukkan hubungan “bagian dari” antar himpunan bilangan.
+                        </p>
 
-                <div id="konten-materi1" class="content-section">
-                    <div class="content-block">
-                        <span class="category-label">Pra-Kalkulus</span>
-                        <h2 class="content-title">Bilangan Real</h2>
-                        <p class="description">Bilangan real adalah himpunan bilangan yang mencakup semua bilangan
-                            rasional dan irasional. Contoh bilangan real meliputi angka-angka seperti 3, -5, 0.75, π
-                            (pi), dan √2.</p>
-                    </div>
-                </div>
+                        <div class="euler-diagram-container content-block">
+                            <p style="font-size: 12px; color: var(--text-secondary); margin-top: 10px;">
+                                <em>Gunakan <strong>Diagram Euler</strong> dibawah ini untuk memahami hubungan antar subset bilangan. Klik pada bagian diagram atau materi di panel untuk melihat penjelasannya.</em>
+                            </p>
 
-                <div id="konten-materi2" class="content-section">
-                    <div class="content-block">
-                        <span class="category-label">Kalkulus Lanjut</span>
-                        <h2 class="content-title">Integral Lipat</h2>
-                        <p class="description">Integral lipat adalah generalisasi dari integral tentu untuk fungsi
-                            lebih dari satu variabel nyata. Ini sering digunakan untuk menghitung luas atau volume
-                            dari bangun ruang tiga dimensi.</p>
+                            <div class="euler-diagram-wrapper">
+                                <div class="euler-diagram-box">
+                                    <svg viewBox="0 0 1000 1000" class="euler-svg-canvas">
+                                        <circle cx="500" cy="500" r="490" class="euler-shape shape-real"
+                                            id="euler-diagram-circle-real" />
+                                        <text x="500" y="80" text-anchor="middle" class="euler-text text-real"
+                                            id="euler-diagram-label-real">Real Numbers</text>
+
+                                        <circle cx="160" cy="500" r="120" class="euler-shape shape-irrational"
+                                            id="euler-diagram-circle-irrational" />
+                                        <text x="160" y="500" dy=".3em" text-anchor="middle"
+                                            class="euler-text text-irrational"
+                                            id="euler-diagram-label-irrational">Irrational<tspan x="160" dy="1.2em">
+                                                Numbers</tspan></text>
+
+                                        <g transform="translate(480,0)">
+                                            <circle cx="150" cy="500" r="320" class="euler-shape shape-rational"
+                                                id="euler-diagram-circle-rational" />
+                                            <text x="200" y="270" text-anchor="middle" class="euler-text text-rational"
+                                                id="euler-diagram-label-rational">Rational Numbers</text>
+
+                                            <circle cx="160" cy="550" r="230" class="euler-shape shape-integers"
+                                                id="euler-diagram-circle-integers" />
+                                            <text x="180" y="360" text-anchor="middle" class="euler-text text-integers"
+                                                id="euler-diagram-label-integers">Integers</text>
+
+                                            <circle cx="160" cy="570" r="170" class="euler-shape shape-whole"
+                                                id="euler-diagram-circle-whole" />
+                                            <text x="170" y="445" text-anchor="middle" class="euler-text text-whole"
+                                                id="euler-diagram-label-whole">Whole<tspan x="200" dy="1.2em">Numbers
+                                                </tspan></text>
+
+                                            <circle cx="170" cy="600" r="100" class="euler-shape shape-natural"
+                                                id="euler-diagram-circle-natural" />
+                                            <text x="170" y="560" text-anchor="middle" class="euler-text text-natural"
+                                                id="euler-diagram-label-natural">Natural<tspan x="170" dy="1.2em">
+                                                    Numbers</tspan></text>
+                                        </g>
+                                    </svg>
+                                </div>
+
+                                <div class="euler-accordion-box">
+
+                                    <div class="euler-acc-item" id="euler-diagram-item-natural">
+                                        <div class="euler-acc-header" data-target="natural">Bilangan Asli (Natural
+                                            Numbers) <i class="ri-arrow-down-s-line"></i></div>
+                                        <div class="euler-acc-content">
+                                            <p>Bilangan asli (Natural Numbers) adalah bilangan yang digunakan untuk menghitung benda satu per satu di dunia nyata. Misalnya kamu punya 3 buku, angka 3 diperoleh dari menghitung langsung: satu buku, dua buku, tiga buku. Bilangan seperti ini adalah 1, 2, 3, dan seterusnya. Bilangan asli adalah bilangan paling sederhana karena tidak memiliki pecahan, tidak ada desimal, tidak ada angka 0 dan tidak negatif.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="euler-acc-item" id="euler-diagram-item-whole">
+                                        <div class="euler-acc-header" data-target="whole">Bilangan Cacah (Whole Numbers)
+                                            <i class="ri-arrow-down-s-line"></i>
+                                        </div>
+                                        <div class="euler-acc-content">
+                                            <p>Bilangan cacah (Whole Numbers)adalah bilangan yang digunakan untuk menghitung jumlah benda di dunia nyata, termasuk kemungkinan tidak ada benda sama sekali. Misalnya kamu punya 0 buku, artinya memang tidak ada buku yang dihitung. Lalu kalau ada, kamu menghitung seperti biasa: satu buku, dua buku, tiga buku. Bilangan seperti ini adalah 0, 1, 2, 3, dan seterusnya. Jadi, bilangan cacah adalah pengembangan dari bilangan asli dengan menambahkan angka 0, dan tetap tidak memiliki pecahan, tidak ada desimal, serta tidak negatif.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="euler-acc-item" id="euler-diagram-item-integers">
+                                        <div class="euler-acc-header" data-target="integers"> Bilangan Bulat (Integers)
+                                            <i class="ri-arrow-down-s-line"></i>
+                                        </div>
+                                        <div class="euler-acc-content">
+                                            <p>Bilangan bulat (Integers) adalah bilangan yang digunakan untuk menyatakan jumlah benda, termasuk kemungkinan kekurangan atau arah yang berlawanan. Misalnya kamu punya 3 buku itu ditulis 3, tetapi kalau kamu berutang 3 buku (atau kehilangan 3 buku), itu bisa dinyatakan sebagai −3. Selain itu, jika tidak punya buku sama sekali, itu adalah 0. Jadi bilangan bulat seperti ini adalah ..., −3, −2, −1, 0, 1, 2, 3, dan seterusnya. Bilangan bulat mencakup bilangan negatif, nol, dan bilangan positif, tetapi tetap tidak memiliki pecahan dan tidak ada desimal.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="euler-acc-item" id="euler-diagram-item-rational">
+                                        <div class="euler-acc-header" data-target="rational">Bilangan Rasional (Rational Numbers)<i class="ri-arrow-down-s-line"></i></div>
+                                        <div class="euler-acc-content">
+                                            <p>Bilangan rasional (Rational Numbers) adalah bilangan yang dapat dinyatakan sebagai perbandingan dua bilangan bulat, yaitu dalam bentuk pecahan seperti a/b dengan b tidak sama dengan 0. Misalnya kamu punya 1 kue lalu dibagi menjadi 2 bagian sama, maka satu bagian adalah 1/2. Atau 3 dibagi 4 menjadi 3/4. Selain itu, bilangan seperti 0,5 atau 0,75 juga termasuk karena bisa diubah menjadi pecahan (0,5 = 1/2, 0,75 = 3/4). Jadi bilangan rasional mencakup semua bilangan yang bisa ditulis sebagai pecahan, termasuk bilangan bulat, dan desimalnya selalu berhenti atau berulang.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="euler-acc-item" id="euler-diagram-item-irrational">
+                                        <div class="euler-acc-header" data-target="irrational">Bilangan Irasional (Irrational Numbers)<i class="ri-arrow-down-s-line"></i></div>
+                                        <div class="euler-acc-content">
+                                            <p>Bilangan irasional (Irrational Numbers) adalah bilangan yang tidak dapat dinyatakan sebagai perbandingan dua bilangan bulat (tidak bisa ditulis dalam bentuk pecahan a/b). Misalnya seperti π atau √2. Jika ditulis dalam bentuk desimal, angkanya tidak pernah berhenti dan tidak memiliki pola yang berulang, seperti 3,14159… atau 1,41421…<br>Jadi, berbeda dengan bilangan rasional, bilangan irasional tidak bisa dinyatakan sebagai pecahan, dan desimalnya selalu tak berhingga serta tidak berulang.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="euler-acc-item" id="euler-diagram-item-overview">
+                                        <div class="euler-acc-header" data-target="real">Bilangan Real (Real Numbers)<i
+                                                class="ri-arrow-down-s-line"></i></div>
+                                        <div class="euler-acc-content">
+                                            <p>Bilangan real (Real Numbers) adalah semua bilangan yang dapat ditempatkan pada garis bilangan. Artinya, setiap titik pada garis tersebut mewakili satu bilangan real. Bilangan ini mencakup bilangan rasional (seperti 1/2, 0,75) dan bilangan irasional (seperti π dan √2).<br>Jadi, bilangan real adalah gabungan dari bilangan rasional dan irasional, mencakup semua bilangan yang bisa kita bayangkan berada di garis bilangan, tanpa ada celah sedikit pun.</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="content-title">Estimasi</h3>
+                        <p class="description">
+                            Bayangkan kamu ingin mengetahui hasil suatu perhitungan, tetapi menghitungnya secara tepat akan memakan waktu atau terasa rumit. Dalam kondisi seperti itu, kamu tidak selalu butuh jawaban yang persis, yang penting cukup dekat dan masuk akal. Di sinilah estimasi digunakan.<br><span class="break"></span>
+                            Misalkan:
+                        </p>
+                        <ol class="description" style="padding: 0 0 30px 30px;">
+                            <li>Kamu lihat ada banyak kelereng di meja, tanpa menghitung satu per satu kamu bilang: “sekitar 20 kelereng.” → ini <strong>estimasi</strong></li>
+                            <li>Kamu ingin cepat tahu total harga, misalnya 9.800 + 5.200, kamu langsung pikir “sekitar 10 ribu + 5 ribu = 15 ribu.” → ini <strong>estimasi</strong>.</li>
+                            <li>Kamu melihat waktu, sekarang 10:58, lalu bilang “sekitar jam 11.” → ini juga <strong>estimasi</strong>.</li>
+                        </ol>    
+                        <p class="description">
+                            <strong>Estimasi</strong> adalah cara <strong>memperkirakan</strong> nilai suatu bilangan dengan menyederhanakan perhitungan, biasanya dengan membulatkan angka atau menggunakan pendekatan yang lebih mudah. <br>Misalnya 49 + 51 bisa kamu perkirakan menjadi 50 + 50 = 100. Atau √2 yang nilainya sekitar 1,414… bisa kamu anggap sekitar 1,4. <br> <span class="break"></span>Dengan estimasi, kamu bisa mendapatkan gambaran hasil dengan cepat tanpa harus menghitung secara detail. <strong>Estimasi tidak mencari jawaban yang persis benar</strong>, tetapi jawaban yang cukup mendekati sehingga tetap berguna. Ini sering dipakai saat menghitung cepat, mengecek apakah jawaban masuk akal, atau saat perhitungan tepat terlalu rumit.
+                        </p>
+                        <h3 class="content-title" style="margin-top: 50px;">Logika</h3>
+                        <p class="description">
+                            Bayangkan situasi sederhana berikut:<span class="break"></span>
+                            Kamu melihat jalanan basah, lalu kamu langsung berpikir, “berarti tadi hujan.” Tapi sebenarnya belum tentu—bisa saja disiram air.<br><span class="break"></span>
+                            Nah, di sini muncul masalah:<br><strong>bagaimana cara kita memastikan suatu kesimpulan itu benar, bukan sekadar tebakan?</strong>Di sinilah logika digunakan. <br><span class="break"></span><strong>Logika adalah cara berpikir yang membantu kita menyusun alasan dengan benar</strong>. Dalam matematika, kita mulai dari pernyataan (kalimat yang bisa benar atau salah), lalu menghubungkannya dengan aturan yang jelas. <br><span class="break"></span>
+                        </p>
+                        <p class="description">
+                            Contoh sederhana:<br>
+                            "Jika hari ini hujan, maka jalanan akan basah."<br><span class="break"></span>
+                            Logika mengatur <strong>cara menarik kesimpulan dari pernyataan tersebut</strong>. Misalnya:<br>
+                            </p>
+                            <li class="description" style="margin-left: 20px;">Kalau hujan → jalan pasti basah.</li>
+                            <li class="description" style="margin-left: 20px;">Tapi kalau jalan basah → belum tentu hujan.</li>
+                            <p class="description">Logika membantu kita memahami hubungan sebab-akibat dengan benar, sehingga kita bisa membuat kesimpulan yang valid berdasarkan informasi yang kita miliki.</p>
+                    </div>
+
+                    <div id="pertidaksamaan-nilaimutlak" class="content-section">
+                        <div class="content-block">
+                            <span class="category-label">Pertidaksamaan dan Nilai Mutlak</span>
+                            <h2 class="content-title">Pertidaksamaan</h2>
+                            <p class="description">
+                                Misalkan kamu punya uang 10 ribu rupiah, dan ingin beli pensil yang harganya 2 ribu per buah. Pertanyaannya: <strong>maksimal kamu bisa beli berapa pensil?</strong><span class="break"></span>
+                                Jika ditulis:
+                            </p>
+                            <li class="description" style="margin-left: 20px;">Harga pensil = 2 ribu</li>
+                            <li class="description" style="margin-left: 20px;">Jumlah pensil = <math><mi>x</mi></math></li>
+                            <span class="description">Maka:</span><br>
+                            <p>\\( x + 2 = 5 \\)</p>
+                        </div>
+                    </div>
+
+                    <div id="konten-materi2" class="content-section">
+                        <div class="content-block">
+                            <span class="category-label">Kalkulus Lanjut</span>
+                            <h2 class="content-title">Integral Lipat</h2>
+                            <p class="description">Integral lipat adalah generalisasi dari integral tentu untuk fungsi lebih dari satu variabel nyata. Ini sering digunakan untuk menghitung luas atau volume dari bangun ruang tiga dimensi.</p>
+                        </div>
                     </div>
                 </div>
-        </div>
-    </section>
-    </main>
+            </section>
+        </main>
     </div>
-    <script src="graph/ilustrasi-satu.js"></script>
+
     <script src="script.js"></script>
+    <script src="graph/ilustrasi-satu/ilustrasi-satu.js"></script>
+    <script src="graph/ilustrasi euler/script-euler.js"></script>
 </body>
 
 </html>

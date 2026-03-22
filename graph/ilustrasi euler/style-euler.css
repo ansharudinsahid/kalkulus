@@ -1,0 +1,168 @@
+/* =========================================================
+   GAYA KHUSUS SISTEM BILANGAN (DIAGRAM EULER INTERAKTIF)
+   ========================================================= */
+
+.euler-diagram-container {
+    margin-top: 50px; /* Jarak dari materi sebelumnya */
+}
+
+.euler-diagram-wrapper {
+    display: flex;
+    gap: 30px;
+    margin-top: 25px;
+    width: 100%;
+    padding: 20px;
+    background: var(--bg-sidebar); /* Supaya menyatu dengan dark mode */
+    border-radius: 15px;
+}
+
+/* --- BAGIAN DIAGRAM (SVG) --- */
+.euler-diagram-box {
+    flex: 1.2; /* Lebih besar dari akordeon */
+    min-width: 0;
+}
+
+.euler-svg-canvas {
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+}
+
+/* Gaya dasar lingkaran diagram */
+.euler-shape {
+    fill: transparent; /* DIUBAH: Dari 'none' menjadi 'transparent' agar seluruh area dalam bisa diklik */
+    stroke-width: 3;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Gaya dasar label teks diagram */
+.euler-text {
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* WARNA GAYA DASAR (BERDASARKAN GAMBAR) */
+.shape-real { stroke: #8D6E63; } /* Cokelat */
+.shape-irrational { stroke: #7E57C2; } /* Ungu */
+.shape-rational { stroke: #FB8C00; } /* Oranye */
+.shape-integers { stroke: #3949AB; } /* Biru */
+.shape-whole { stroke: #43A047; } /* Hijau */
+.shape-natural { stroke: #E53935; } /* Merah */
+
+/* WARNA LABEL GAYA DASAR (BERDASARKAN GAMBAR) */
+.text-real { fill: #8D6E63; font-size: 36px; }
+.text-irrational { fill: #7E57C2; font-size: 30px;}
+.text-rational { fill: #FB8C00; font-size: 30px;}
+.text-integers { fill: #3949AB; font-size: 30px;}
+.text-whole { fill: #43A047; font-size: 30px;}
+.text-natural { fill: #E53935; font-size: 30px;}
+
+/* --- EFEK HOVER & AKTIF DIAGRAM --- */
+
+/* Hover: Sorotan garis lembut */
+.euler-shape:hover, .euler-text:hover {
+    stroke-width: 5;
+    filter: drop-shadow(0 0 5px rgba(0, 162, 255, 0.3)); /* Sedikit efek menyala */
+}
+
+/* Aktif: Tebalkan garis & isi lingkaran terang dengan opacity 0.5 */
+.euler-shape.active {
+    stroke-width: 6; /* Tebalkan garis */
+    fill-opacity: 0.5; /* Opacity isi 0.5 */
+}
+
+/* WARNA AKTIF (Isi Lingkaran Terang & Opacity 0.5) */
+/* Menggunakan RGBA agar isi terang namun transparan */
+
+/* Cokelat dengan opacity 0.5 */
+.shape-real.active { fill: rgba(141, 110, 99, 0.5); }
+/* Ungu dengan opacity 0.5 */
+.shape-irrational.active { fill: rgba(126, 87, 194, 0.5); }
+/* Oranye dengan opacity 0.5 */
+.shape-rational.active { fill: rgba(251, 140, 0, 0.5); }
+/* Biru dengan opacity 0.5 */
+.shape-integers.active { fill: rgba(57, 73, 171, 0.5); }
+/* Hijau dengan opacity 0.5 */
+.shape-whole.active { fill: rgba(67, 160, 71, 0.5); }
+/* Merah dengan opacity 0.5 */
+.shape-natural.active { fill: rgba(229, 57, 53, 0.5); }
+
+/* --- PANEL AKORDEON (KANAN) --- */
+.euler-accordion-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.euler-acc-item {
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--bg-main); /* Menggunakan warna utama untuk item */
+    overflow: hidden;
+}
+
+.euler-acc-header {
+    padding: 15px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.euler-acc-header:hover {
+    background-color: var(--border-color);
+}
+
+.euler-acc-content {
+    padding: 0 15px;
+    max-height: 0; /* Sembunyikan secara default */
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.euler-acc-content p {
+    font-size: 0.8rem;
+    color: var(--text-primary);
+    line-height: 1.5;
+    margin: 15px 0;
+}
+
+/* Ikon Panah */
+.euler-acc-header i {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+/* GAYA AKTIF AKORDEON */
+.euler-acc-item.active .euler-acc-header {
+    background-color: var(--border-color);
+}
+
+.euler-acc-item.active .euler-acc-content {
+    max-height: 350px; /* Batas tinggi konten yang terbuka */
+    padding: 10px 15px;
+}
+
+.euler-acc-item.active .euler-acc-header i {
+    transform: rotate(180px);
+}
+
+/* =========================================
+   RESPONSIVE LAYOUT (Mobile)
+   ========================================= */
+@media (max-width: 768px) {
+    html {
+        font-size: 14px; /* Sedikit lebih kecil untuk layar kecil */
+    }
+    .euler-diagram-wrapper {
+        flex-direction: column; /* Diagram di atas, akordeon di bawah */
+        gap: 20px;
+    }
+}
