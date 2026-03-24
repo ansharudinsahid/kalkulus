@@ -135,7 +135,7 @@
     }
 
     #track-ilustrasi.zoom-in .label { 
-        font-size: 5px; 
+        font-size: 7px; 
         top: 25px; /* Angka digeser sedikit ke atas karena tinggi kotak berkurang */
     }
     #track-ilustrasi.zoom-in .integer .label, 

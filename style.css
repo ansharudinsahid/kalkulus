@@ -37,6 +37,16 @@ html {
 }
 
 body {
+    min-height: 100dvh;
+}
+
+.math {
+    font-family: "Cambria Math", serif;
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+body {
     background-color: var(--bg-main);
     color: var(--text-primary);
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -196,9 +206,9 @@ body {
 .menu-item {
     text-decoration: none;
     color: var(--text-primary);
-    padding: 12px 15px;
-    border-radius: 10px;
-    font-size: 1rem;
+    padding: 7px 10px;
+    border-radius: 15px;
+    font-size: 0.9rem;
     font-weight: 500;
     transition: background-color 0.2s;
         /* Mencegah teks bisa diblok/diseleksi */
@@ -461,6 +471,10 @@ input:checked+.slider:before {
 
 /* --- ATURAN KHUSUS HP (MOBILE) --- */
 @media (max-width: 768px) {
+    .menu-item {
+        font-size: 0.8rem;
+    }
+
     .description {
         font-size: 0.9rem;
         /* Sedikit lebih kecil untuk layar kecil */
@@ -500,7 +514,7 @@ input:checked+.slider:before {
     }
 
     .sidebar-bottom-fixed {
-        padding: 10px 30px 70px 30px;
+        padding: 10px 30px 10px 30px;
     }
 }
 
@@ -535,4 +549,29 @@ input:checked+.slider:before {
 @font-face {
     font-family: "Poppins";
     src: url("font/poppins/Poppins-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url("font/poppins/Poppins-Regular.ttf") format("truetype");
+    font-weight: 400; /* Regular */
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url("font/poppins/Poppins-Medium.ttf") format("truetype");
+    font-weight: 500; /* Medium */
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url("font/poppins/Poppins-Bold.ttf") format("truetype");
+    font-weight: 700; /* Bold */
+}
+/* Class khusus untuk rumus yang berada di tengah */
+.math-display {
+    text-align: center;
+    font-size: 0.5rem; /* Sesuaikan angka ini (misal 1.5rem untuk lebih besar) */
+    margin: 10px 0;    /* Memberi jarak atas dan bawah */
+    overflow-x: auto;  /* Mencegah rumus terpotong jika layar HP terlalu kecil */
 }

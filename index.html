@@ -8,8 +8,24 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="graph/ilustrasi-satu/ilustrasi-satu.css">
     <link rel="stylesheet" href="graph/ilustrasi euler/style-euler.css">
+    <link rel="stylesheet" href="graph/ilustrasi-utama.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']], // Untuk rumus sejajar dengan teks
+                displayMath: [['$$', '$$'], ['\\[', '\\]']] // Untuk rumus yang berada di tengah (blok baru)
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+
 </head>
 
 <body>
@@ -40,7 +56,7 @@
                     <a href="#" class="menu-item active" data-target="konten-dashboard">Dashboard</a>
                     <span class="big-materi">Pra-Kalkulus</span>
                     <a href="#" class="menu-item" data-target="bilangan-real">Bilangan Real, Estimasi, dan Logika</a>
-                    <a href="#" class="menu-item" data-target="pertidaksamaan-nilaimutlak">Pertidaksamaan dan Nilai Mutlak</a>
+                    <a href="#" class="menu-item" data-target="pertidaksamaan-nilaimutlak">Persamaan, Pertidaksamaan, dan Nilai Mutlak</a>
                     <a href="#" class="menu-item" data-target="konten-materi2">Materi Kalkulus 2</a>
                 </nav>
             </div>
@@ -49,8 +65,8 @@
                 <div class="dark-mode-card">
                     <div class="dark-mode-info">
                         <i class="ri-sun-line"></i>
-                        <span>Dark Mode</span>
                     </div>
+                    <span style="font-size: 0.8rem;">Dark Mode</span>
                     <label class="toggle-switch">
                         <input type="checkbox" id="darkModeToggle">
                         <span class="slider"></span>
@@ -91,7 +107,7 @@
                                 <li>Tidak memiliki celah</li>
                             </ol>
                             <p class="description">
-                                Karena begitu rapatnya, yang terlihat hanyalah sebuah garis utuh, garis ini disebut garis bilangan. Setiap titik pada garis ini mewakili sebuah bilangan real. Bilangan real mencakup semua bilangan yang bisa kita temukan di garis tersebut, termasuk bilangan rasional (seperti 1/2, 0.75) dan bilangan irasional (seperti π, √2). Jadi, setiap angka yang bisa kita bayangkan berada di suatu tempat di garis ini, menjadikan garis bilangan real sebagai representasi visual dari semua bilangan yang ada.<br> Secara konsep, titik-titik pada garis bilangan real tersusun sangat rapat tanpa celah. Namun, dalam ilustrasi dibawah, kita hanya bisa menampilkan sebagian titik saja, misalnya hingga dua angka desimal seperti 2,67.
+                                Karena begitu rapatnya, yang terlihat hanyalah sebuah garis utuh, garis ini disebut <strong>garis bilangan</strong>. Setiap titik pada garis ini mewakili sebuah bilangan real. Bilangan real mencakup semua bilangan yang bisa kita temukan di garis tersebut, termasuk bilangan rasional (seperti 1/2, 0.75) dan bilangan irasional (seperti π, √2). Jadi, setiap angka yang bisa kita bayangkan berada di suatu tempat di garis ini, menjadikan garis bilangan real sebagai representasi visual dari semua bilangan yang ada.<br> Secara konsep, titik-titik pada garis bilangan real tersusun sangat rapat tanpa celah. Namun, dalam ilustrasi dibawah, kita hanya bisa menampilkan sebagian titik saja, misalnya hingga dua angka desimal seperti 2,67.
                             </p>
 
                         </div>
@@ -116,10 +132,10 @@
                         </p>
                         <p class="description" style="margin-top: 20px;">
                             Sejauh ini, kita melihat bahwa setiap titik pada garis bilangan memiliki sebuah nilai, dan semua nilai tersebut disebut bilangan real.<br> Namun, tidak semua bilangan real memiliki sifat yang sama.<br> Beberapa bilangan:<br>
+                        </p>
                             <li style="margin-left: 30px; font-size: 0.9rem;">mudah ditulis (seperti 1, 2, atau 0.5)</li>
                             <li style="margin-left: 30px; font-size: 0.9rem;">ada yang berupa pecahan</li>
                             <li style="margin-left: 30px; font-size: 0.9rem;">ada juga yang tidak bisa ditulis secara sederhana seperti π </li>
-                        </p>
                         <p class="description">
                             jenis pengelompokan ini dapat divisualisasikan menggunakan diagram Euler, yaitu diagram yang menunjukkan hubungan “bagian dari” antar himpunan bilangan.
                         </p>
@@ -254,16 +270,95 @@
 
                     <div id="pertidaksamaan-nilaimutlak" class="content-section">
                         <div class="content-block">
-                            <span class="category-label">Pertidaksamaan dan Nilai Mutlak</span>
-                            <h2 class="content-title">Pertidaksamaan</h2>
+                            <span class="category-label">Persamaan, Pertidaksamaan, dan Nilai Mutlak</span>
+                            <h2 class="content-title">Persamaan dan Pertidaksamaan</h2>
                             <p class="description">
-                                Misalkan kamu punya uang 10 ribu rupiah, dan ingin beli pensil yang harganya 2 ribu per buah. Pertanyaannya: <strong>maksimal kamu bisa beli berapa pensil?</strong><span class="break"></span>
-                                Jika ditulis:
+                                Kamu ingin membeli sebuah buku seharga Rp50.000. Kamu sudah punya uang Rp20.000. Berapa sisa uang yang harus kamu cari agar uangmu pas untuk membeli buku itu?<span class="break"></span>
+                                Dalam matematika, kondisi <strong>"pas"</strong> atau <strong>"sama dengan"</strong> ini disebut <strong>Persamaan</strong>.<br> Jika <math><mi>x</mi></math> adalah uang yang harus kamu cari, maka:
                             </p>
-                            <li class="description" style="margin-left: 20px;">Harga pensil = 2 ribu</li>
-                            <li class="description" style="margin-left: 20px;">Jumlah pensil = <math><mi>x</mi></math></li>
+                            <li class="description" style="margin-left: 20px;">Harga buku = 50.000</li>
+                            <li class="description" style="margin-left: 20px;">Uang yang sudah kamu punya = 20.000</li>
                             <span class="description">Maka:</span><br>
-                            <p>\\( x + 2 = 5 \\)</p>
+                            <p class="math" style="text-align: center;">
+                            20.000 + <math><mi>x</mi><mo></mo></math> = 50.000<span class="break"></span>
+                            </p>
+                            <p class="description">Di sini, hanya ada satu jawaban benar:<br> <math><mi>x</mi></math> haruslah 30.000. Kurang seribu atau lebih seribu, kondisinya tidak lagi "pas".<span class="break"></span>
+                            Sekarang, syaratnya berubah. Penjualnya bilang, <strong>"Kamu boleh beli buku ini kalau uangmu paling sedikit Rp50.000."</strong> Artinya, punya uang Rp50.000 boleh, Rp60.000 boleh, bahkan Rp1.000.000 pun boleh. <span class="break"></span>Kondisi yang memberikan <strong>"rentang"</strong> atau <strong>"batas"</strong> ini disebut <strong>Pertidaksamaan</strong>. Lambangnya bukan lagi =, tapi bisa <span class="math">≥</span> (lebih besar atau sama dengan).
+                            </p>
+                            <p class="description" style="text-align: center;">
+                                $$ 20.000 + x \ge 50.000 $$ 
+                            </p>
+                            <p class="description">
+                                $ x $ adalah variabel yang mewakili jumlah uang yang harus kamu cari. Karena kamu sudah punya 20.000, maka untuk memenuhi syarat "paling sedikit 50.000", kamu harus mencari uang tambahan yang membuat totalnya minimal 50.000.<span class="break"></span>
+                                Cara mencari $ x $ adalah dengan mengurangkan 20.000 dari kedua sisi pertidaksamaan:<br>
+                                $$
+                                \begin{align*}
+                                20.000 + x - 20.000 &\ge 50.000 - 20.000 \\
+                                (20.000 - 20.000) + x &\ge 30.000 \\
+                                x &\ge 30.000
+                                \end{align*}
+                                $$<span class="break"></span>
+                            </p>
+                            <p class="description">
+                                <span class="break"></span>Artinya, jawabannya bukan satu angka saja, tapi sebuah rentang:<br> $$ x \ge 30.000 $$<br>Selama kamu membawa uang 30.000 atau lebih, masalahmu selesai.
+                            </p>
+                            <!-- Nilai Mutlak -->
+                            <h2 class="content-title">Nilai Mutlak</h2>
+                            <p class="description">
+                                Dalam matematika, kita sering peduli dengan posisi (apakah itu di kiri atau di kanan, atas atau bawah). Tapi dalam Nilai Mutlak, kita hanya peduli pada seberapa jauh sesuatu itu dari titik pusat (nol).<Br><span class="break"></span>
+                                Bayangkan kamu sedang memotong kayu. Panjang kayu yang ideal adalah 100 cm.
+                            </p>
+                            <li class="description" style="margin-left: 30px;">Jika kamu memotongnya 102 cm, kamu kelebihan 2 cm.</li>
+                            <li class="description" style="margin-left: 30px;">Jika kamu memotongnya 98 cm, kamu kekurangan 2 cm.</li>
+                            <p class="description">
+                                Dalam dunia pertukangan, yang paling penting adalah selisihnya (error-nya). Baik itu +2 atau -2, kesalahanmu tetaplah sebesar 2 cm. Angka "2" inilah yang kita sebut sebagai <strong>Nilai Mutlak</strong> dari kesalahanmu. <span class="break"></span>
+                            </p>
+                            <p class="description">
+                                Dalam matematika, kita menulis nilai mutlak dengan garis vertikal ganda. Jadi, jika $ x $ adalah panjang kayu yang kamu potong, maka kesalahanmu bisa ditulis sebagai $ |x - 100| $. <span class="break"></span>
+                            </p>
+                            <li class="description" style="margin-left: 30px;">$ |x| = x $</li>
+                            <li class="description" style="margin-left: 30px;">$ |-x| = x $</li>
+                            <span class="break"></span>
+                            <p class="description">
+                                Nilai mutlak ini <strong>selalu menghasilkan angka positif</strong> atau nol, karena kita hanya peduli pada besarnya kesalahan, bukan arahnya. Jadi, baik kamu memotong 102 cm atau 98 cm, nilai mutlaknya tetap 2 cm.
+                                <span class="break"></span>
+                            </p>
+
+                            <!-- ilustrasi mutlak -->
+                            <div class="mutlak-container">
+                                <div class="mutlak-header">
+                                    <h5>Konsep Nilai Mutlak: Jarak dari Titik Nol</h5>
+                                </div>
+                                
+                                <div class="mutlak-visual-area">
+                                    <svg id="mutlakSvg" width="100%" height="120">
+                                        <defs>
+                                            <marker id="arrowhead" markerWidth="6.8" markerHeight="7" refX="3" refY="3" orient="auto">
+                                                <polygon points="0 0, 3 3, 0 6" fill="#e74c3c" />
+                                            </marker>
+                                        </defs>
+                                        <line x1="10%" y1="80" x2="90%" y2="80" stroke="#333" stroke-width="2" />
+                                        
+                                        <g id="numberTicks"></g>
+
+                                        <line id="distanceArrow" x1="50%" y1="50" x2="50%" y2="50" stroke="#e74c3c" stroke-width="3" marker-end="url(#arrowhead)" />
+                                        
+                                        <line id="guideLine" x1="50%" y1="80" x2="50%" y2="50" stroke="#e74c3c" stroke-width="2" stroke-dasharray="4" />
+                                    </svg>
+                                </div>
+
+                                <div class="slider-wrapper">
+                                    <input type="range" min="-8" max="8" value="4" class="mutlak-slider" id="xSlider">
+                                </div>
+
+                                <div class="mutlak-info">
+                                    <div class="mutlak-equation" id="mutlakEquation">|4| = 4</div>
+                                    <div class="mutlak-note" id="mutlakNote">Jaraknya 4 langkah dari 0</div>
+                                </div>
+                            </div>
+                            <!-- end ilustrasi mutlak -->
+
+
                         </div>
                     </div>
 
@@ -279,9 +374,12 @@
         </main>
     </div>
 
+
+
     <script src="script.js"></script>
     <script src="graph/ilustrasi-satu/ilustrasi-satu.js"></script>
     <script src="graph/ilustrasi euler/script-euler.js"></script>
+    <script src="graph/ilustrasi-utama.js"></script>
 </body>
 
 </html>
