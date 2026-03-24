@@ -36,10 +36,6 @@ html {
     /* Ukuran font dasar untuk desktop (1rem) */
 }
 
-body {
-    min-height: 100dvh;
-}
-
 .math {
     font-family: "Cambria Math", serif;
     font-size: 1rem;
@@ -51,6 +47,7 @@ body {
     color: var(--text-primary);
     transition: background-color 0.3s ease, color 0.3s ease;
     overflow: hidden;
+    min-height: 100dvh;
     /* Mencegah scroll pada seluruh halaman (body) */
 }
 
@@ -78,7 +75,7 @@ body {
 
 .app-container {
     display: flex;
-    height: 100vh;
+    height: 100dvh;
 }
 
 /* --- SIDEBAR STYLES --- */
