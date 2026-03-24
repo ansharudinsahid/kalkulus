@@ -500,7 +500,7 @@ input:checked+.slider:before {
         position: fixed;
         top: 0;
         left: 0;
-        height: 100vh;
+        height: 100%;
         z-index: 20;
         transform: translateX(-100%);
         /* Sembunyikan secara default di HP */
