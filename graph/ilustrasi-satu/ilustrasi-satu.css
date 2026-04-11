@@ -127,6 +127,7 @@
     /* Penyesuaian ukuran font agar angka tidak terlalu bertumpuk di layar sempit */
     #track-ilustrasi.zoom-out .integer .label { 
         font-size: 8px; 
+        top: 20px;
     }
     
     #track-ilustrasi.zoom-mid .integer .label,
@@ -147,6 +148,6 @@
 
     #track-ilustrasi.zoom-in .integer .label { 
         font-size: 7px; 
-        top: 20px;
+        top: 25px;
     }
 }

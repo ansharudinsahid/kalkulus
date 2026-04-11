@@ -52,6 +52,17 @@ body {
     /* Mencegah scroll pada seluruh halaman (body) */
 }
 
+/* Copyright */
+/* --- COPYRIGHT TEXT --- */
+.copyright-text {
+    font-size: 0.75rem; /* Ukuran yang kecil agar tidak mengganggu */
+    color: var(--text-secondary); /* Menggunakan variabel warna agar otomatis menyesuaikan dark/light mode */
+    text-align: center;
+    margin-top: 15px;
+    letter-spacing: 0.5px;
+    user-select: none; /* Mencegah teks terblok tak sengaja */
+}
+
 /* --- KUSTOMISASI SCROLLBAR (Desain Soft) --- */
 ::-webkit-scrollbar {
     width: 6px;
@@ -471,11 +482,11 @@ input:checked+.slider:before {
 /* --- ATURAN KHUSUS HP (MOBILE) --- */
 @media (max-width: 768px) {
     .menu-item {
-        font-size: 0.8rem;
+        font-size: 1rem;
     }
 
     .description {
-        font-size: 0.9rem;
+        font-size: 1.05rem;
         /* Sedikit lebih kecil untuk layar kecil */
         line-height: 1.6;
     }
@@ -497,7 +508,7 @@ input:checked+.slider:before {
     }
 
     .sidebar {
-        width: 240px;
+        width: 300px;
         position: fixed;
         top: 0;
         left: 0;
