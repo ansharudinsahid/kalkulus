@@ -132,15 +132,21 @@
     #track-ilustrasi.zoom-mid .integer .label,
     #track-ilustrasi.zoom-mid .decimal1 .label { 
         font-size: 7px; 
+        top: 20px;
     }
 
     #track-ilustrasi.zoom-in .label { 
         font-size: 7px; 
         top: 25px; /* Angka digeser sedikit ke atas karena tinggi kotak berkurang */
     }
-    #track-ilustrasi.zoom-in .integer .label, 
+    
     #track-ilustrasi.zoom-in .decimal1 .label { 
         font-size: 7px; 
         top: 25px;
+    }
+
+    #track-ilustrasi.zoom-in .integer .label { 
+        font-size: 7px; 
+        top: 20px;
     }
 }

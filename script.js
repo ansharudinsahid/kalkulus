@@ -83,6 +83,11 @@ menuItems.forEach(item => {
             }
         }
 
+        const scrollArea = document.querySelector('.scroll-area');
+        if (scrollArea) {
+            scrollArea.scrollTop = 0;
+        }
+
         // (Opsional & Sangat Berguna)
         // Jika dibuka di HP, otomatis tutup sidebar setelah memilih menu
         if (window.innerWidth <= 768) {

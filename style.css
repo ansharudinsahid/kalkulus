@@ -328,13 +328,13 @@ input:checked+.slider:before {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 30px
+    padding: 0 20px
 }
 
 /* Area konten artikel yang bisa di-scroll independen */
 .scroll-area {
     flex: 1;
-    padding: 40px;
+    padding: 20px;
     overflow-y: auto; 
     min-height: 0;
 }
@@ -482,6 +482,7 @@ input:checked+.slider:before {
 
     .toggle-menu-btn {
         display: block;
+        font-size: 15px;
         /* Selalu tampilkan hamburger di HP */
     }
 
@@ -505,6 +506,8 @@ input:checked+.slider:before {
         transform: translateX(-100%);
         /* Sembunyikan secara default di HP */
         box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 0 15px 15px 0;
+
     }
 
     .sidebar.active {
@@ -570,7 +573,7 @@ input:checked+.slider:before {
 /* Class khusus untuk rumus yang berada di tengah */
 .math-display {
     text-align: center;
-    font-size: 0.5rem; /* Sesuaikan angka ini (misal 1.5rem untuk lebih besar) */
-    margin: 10px 0;    /* Memberi jarak atas dan bawah */
+    font-size: 0.5rem; 
+    margin: 10px 0;    
     overflow-x: auto;  /* Mencegah rumus terpotong jika layar HP terlalu kecil */
 }
